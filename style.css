@@ -1,0 +1,105 @@
+* , *::before , *::after{
+    box-sizing: border-box;
+}
+body {
+    margin : 0 ; 
+    font-family: "Roboto", sans-serif;
+    display : flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    background:
+            linear-gradient(rgba(0,0,0, 0.6) , rgba( 0,0,0, 0.6)),
+            url("images/movie.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width : 100%; 
+    display: flex ;
+    justify-content: space-between;
+    align-items: center;
+    color : #ffffff; 
+    font-weight: 700;
+    height: 300px;
+    padding : 0 .4rem;
+
+}
+h1{
+    margin-top: 0;
+    margin-left: 1rem;
+}
+header nav ul{
+    list-style-type: none;
+}
+nav ul li  a {
+    color : #ffffff;
+    text-decoration: none;
+    margin-right: 4px ;
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+
+}
+#movies{
+    width : 100%;
+    
+}
+#search-bar{
+    position:absolute;
+    padding : 0 .4rem; 
+    height: 40px;
+    width: 90%;
+    border: none;
+    border-radius: 3px ;
+    top :17rem ; 
+    right: 50%;
+    transform: translateX(50%);
+    box-shadow: 1px 1px 15px #252525;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+#movieName{
+    border : none;
+    height: 100%;
+    width : 77%;
+    font-weight: 700;
+    padding : 0 .5rem;
+}
+#search{
+    height: 100%;
+    background-color: #ffffff;
+    border: none;
+    font-weight: 600;
+    width : 12%;
+    color : gray;
+    border-left: 1px solid #303030;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+
+}
+.icon{
+    color : #808080;
+    border : none;
+}
+.moviesCon{
+    width : 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    margin-top: 6rem;
+    color : #808080;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fa-film{
+    font-size: 4rem;
+}
