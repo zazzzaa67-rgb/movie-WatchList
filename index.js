@@ -13,11 +13,11 @@ if(searchList){
     })
     async function storeData(){
         searchListArr = []
-        const res = await fetch(`http://www.omdbapi.com/?apikey=91dac549&s=${movie.value}`)
+        const res = await fetch(`https://www.omdbapi.com/?apikey=91dac549&s=${movie.value}`)
         const data = await res.json()
         if(data.Search){
             for(let film of data.Search ){
-                const res = await fetch(`http://www.omdbapi.com/?apikey=91dac549&i=${film.imdbID}`)
+                const res = await fetch(`https://www.omdbapi.com/?apikey=91dac549&i=${film.imdbID}`)
                 const data = await res.json()
                     searchListArr.push(data)
             }
