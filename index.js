@@ -24,6 +24,12 @@ if(searchList){
             console.log(searchListArr)
             localStorage.setItem("searchList" , JSON.stringify(searchListArr))
             render()
+        }else if(movie.value == ""){
+            searchList.innerHTML = `
+                <div class="container">
+                    <p>Oops! Please type a movie title first.</p>
+                </div>`
+
         }else{
             searchList.innerHTML = `
             <div class="container">
@@ -74,10 +80,8 @@ if(searchList){
         const removeBtn = e.target.closest(".remove")
         if(removeBtn){
             const movieId = removeBtn.dataset.id
-            removeFromWatchlist(movieId)
-
-        }}
-    )
+            removeFromWatchlist(movieId)}}
+        )
 
 function addToWatchlist(id){
     const selectedMovie = searchListArr.find(movie => movie.imdbID == id)
@@ -93,8 +97,17 @@ function addToWatchlist(id){
 
 }
 function displayWatchList(){ 
+    watchList.innerHTML=`
+    <div class="container">
+        <p class="empty">Your watchlist is looking a little empty...</p>
+        <a href="index.html" class="move">
+            <i class="fa-solid fa-circle-plus"></i>
+            <p>Let’s add some movies!</p>
+        </a>
+    </div>`
     if(watchListArr.length > 0){
         watchList.innerHTML=""
+        
         for(let watch of watchListArr ){
             watchList.innerHTML +=`
                 <div class="movie">
