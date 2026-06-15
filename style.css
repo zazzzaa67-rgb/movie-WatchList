@@ -9,6 +9,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 header{
     background:
             linear-gradient(rgba(0,0,0, 0.6) , rgba( 0,0,0, 0.6)),
@@ -17,6 +18,7 @@ header{
     background-position: center;
     background-repeat: no-repeat;
     width : 100%; 
+    
     display: flex ;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +30,9 @@ header{
 }
 h1{
     margin-top: 0;
-    margin-left: 1rem;
+    margin-left: 0rem;
+    width : 55%;
+
 }
 header nav ul{
     list-style-type: none;
@@ -36,7 +40,7 @@ header nav ul{
 nav ul li  a {
     color : #ffffff;
     text-decoration: none;
-    margin-right: 4px ;
+    margin-right: 3px ;
     margin-top: 0;
     font-weight: 600;
     font-size: 1.2rem;
@@ -51,6 +55,7 @@ nav ul li  a {
     padding : 0 .4rem; 
     height: 40px;
     width: 90%;
+    max-width: 550px;
     border: none;
     border-radius: 3px ;
     top :17rem ; 
@@ -60,6 +65,7 @@ nav ul li  a {
     background-color: #ffffff;
     display: flex;
     align-items: center;
+    margin-bottom: .7rem;
 }
 #movieName{
     border : none;
@@ -68,6 +74,9 @@ nav ul li  a {
     font-weight: 700;
     padding : 0 .5rem;
 }
+#movieName:focus{
+    outline: none;
+}
 #search{
     height: 100%;
     background-color: #ffffff;
@@ -75,7 +84,7 @@ nav ul li  a {
     font-weight: 600;
     width : 12%;
     color : gray;
-    border-left: 1px solid #303030;
+    border-left: 1px solid #808080;
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
@@ -99,7 +108,119 @@ nav ul li  a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width : 100%; 
+    text-align: center;
 }
 .fa-film{
     font-size: 4rem;
+}
+.empty{
+    width :90%; 
+    margin: 2px auto;
+}
+.move{
+    display: flex;
+    color : #000000;
+    gap : 2px  ;
+    text-decoration: none;
+    margin-top: 4rem;
+    font-weight: 600;
+}
+.move p {
+    margin: 0;
+}
+
+.movie{
+    display : flex;
+    flex-direction: column; 
+    width : 100%;
+    margin: 1.5rem .5rem ;
+    padding:  0 .5rem;
+    height: fit-content; 
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    width : 90%; 
+}
+.movieCon{
+    display: flex;
+    gap : .5rem;
+    
+}
+.poster{
+    width:90% ; 
+    /* height: 300px; */
+    margin-right: 1rem;
+    height: 380px;
+    border-radius: 2px;
+    
+}
+.plot{
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin-top: .7rem;
+}
+#Sorry{
+    text-align: center;
+}
+.add{
+    display : flex;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100px;
+    border: none;
+    background-color: #ffffff;
+    margin-top: 1rem;
+    cursor: pointer;
+    height: 1.8rem;
+}
+.fa-circle-plus{
+    margin-right: .2rem;
+}
+.fa-star{
+    color: #ffd700;
+}
+.rate{
+    display: flex;
+}
+.movie-info{
+    display : flex ;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media(min-width : 640px ){
+    header{
+        display: flex;
+        gap : 10rem ;
+        height: 500px;
+        padding : 0 4rem;
+    }
+    nav ul li a {
+        font-size: 1.5rem;
+        
+    }
+    #search-bar{
+        top: 30rem; 
+        height:45px  ;
+    }
+    .movie{
+        width: 100%;
+        flex-direction: row;
+        border-bottom: 1px solid #808080;
+    }
+    .poster{
+        margin-top: 2rem;
+        min-width: 350px;
+        max-width: 350px;
+        margin-left: 0rem;
+        margin-right: 2rem; 
+        
+    }
+    .plot{
+        max-width: 600px;
+    }
+
 }

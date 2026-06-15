@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Movie watchList</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <!-- Font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
             integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
@@ -17,11 +18,10 @@
     </head>
     <body>
         <header>
-            <link rel="stylesheet" href="style.css">
             <h1>Find your film</h1>
             <nav>
                 <ul>
-                    <li> <a href="watchList.html">My Watchlist</a></li>
+                    <li><a href="watchList.html">My Watchlist</a></li>
                 </ul>
             </nav>
         </header>
@@ -32,7 +32,7 @@
                     <input type="search" placeholder="Blade Runner" id="movieName">
                     <button id="search">search</button>
                 </div>
-                <div class="moviesCon">
+                <div class="moviesCon" id="newMovies">
                     <div class="container">
                         <i class="fa-solid fa-film"></i>
                         <p>Start exploring</p>
@@ -40,7 +40,8 @@
                 </div>
                 
             </section>
+
         </main>
-        
+        <script src="index.js"></script>
     </body>
 </html>
