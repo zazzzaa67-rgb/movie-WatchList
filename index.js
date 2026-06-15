@@ -2,11 +2,12 @@ const movie = document.getElementById("movieName")
 const searchList = document.getElementById("newMovies")
 const watchList = document.getElementById("watchList")
 const searchBtn = document.getElementById("search")
-let  watchListArr = []
-let   searchListArr=[]
+let  watchListArr = JSON.parse(localStorage.getItem("watchList")) || []
+let   searchListArr= JSON.parse(localStorage.getItem("searchList"))|| []
 let moviePosts = []
 let html = ''
 if(searchList){
+    localStorage.setItem("movieName" , movie.value)
     searchBtn.addEventListener("click" , async function(){
         await storeData() 
     })
@@ -21,6 +22,7 @@ if(searchList){
                     searchListArr.push(data)
             }
             console.log(searchListArr)
+            localStorage.setItem("searchList" , JSON.stringify(searchListArr))
             render()
         }else{
             searchList.innerHTML = `
@@ -28,7 +30,9 @@ if(searchList){
                 <p>Sorry, we couldn't find that movie. Try searching for another title.</p>
             </div>`
         }
+
         }
+    
     function render(){
         html = ''
         for(let movie of searchListArr){
@@ -58,17 +62,38 @@ if(searchList){
         if(targetButton){
             const movieId = targetButton.dataset.id
             addToWatchlist(movieId)
+            targetButton.disabled = true;
+            
         }
     } )
+    if(searchListArr.length > 0){
+        render()
+    }
 }
+    watchList.addEventListener("click" , e=>{
+        const removeBtn = e.target.closest(".remove")
+        if(removeBtn){
+            const movieId = removeBtn.dataset.id
+            removeFromWatchlist(movieId)
+
+        }}
+    )
+
 function addToWatchlist(id){
     const selectedMovie = searchListArr.find(movie => movie.imdbID == id)
     if(selectedMovie){
     watchListArr.push(
         selectedMovie
     )   
+    localStorage.setItem("watchList" , JSON.stringify(watchListArr))
     }
     if(watchList){
+        displayWatchList()
+    }
+
+}
+function displayWatchList(){ 
+    if(watchListArr.length > 0){
         watchList.innerHTML=""
         for(let watch of watchListArr ){
             watchList.innerHTML +=`
@@ -82,15 +107,20 @@ function addToWatchlist(id){
                         <div class="movieCon">
                             <p>${watch.Runtime}</p>
                             <p>${watch.Genre}</p>
-                            <button class="add" data-id="${watch.imdbID}"><i class="fa-solid fa-circle-plus"></i> Watchlist</button>
+                            <button class="remove" data-id="${watch.imdbID}"><i class="fa-solid fa-circle-minus"></i> Remove</button>
                         </div>
                         <p class="plot">${watch.Plot}</p>
                     </div>
                 </div>
-                
-            `
+            `}
         }
     }
 
+if(watchList){
+    displayWatchList()
 }
-
+function removeFromWatchlist(id){
+    watchListArr = watchListArr.filter(movie=> movie.imdbID !== id)
+    localStorage.setItem("watchList" , JSON.stringify(watchListArr))
+    displayWatchList()
+}

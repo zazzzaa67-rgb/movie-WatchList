@@ -165,7 +165,7 @@ h2{
 #Sorry{
     text-align: center;
 }
-.add{
+.add , .remove{
     display : flex;
     font-weight: bold;
     font-size: 1rem;
@@ -176,7 +176,7 @@ h2{
     cursor: pointer;
     height: 1.8rem;
 }
-.fa-circle-plus{
+.fa-circle-plus ,.fa-circle-minus{
     margin-right: .2rem;
 }
 .fa-star{
