@@ -12,14 +12,20 @@ if(searchList){
         await storeData() 
     })
     async function storeData(){
+        searchList.innerHTML= `
+        <div class="container">
+            <p>Loading...</p>
+        </div>`
         searchListArr = []
         const res = await fetch(`https://www.omdbapi.com/?apikey=91dac549&s=${movie.value}`)
         const data = await res.json()
+        console.log(data)
         if(data.Search){
             for(let film of data.Search ){
                 const res = await fetch(`https://www.omdbapi.com/?apikey=91dac549&i=${film.imdbID}`)
                 const data = await res.json()
                     searchListArr.push(data)
+                    
             }
             console.log(searchListArr)
             localStorage.setItem("searchList" , JSON.stringify(searchListArr))
@@ -42,9 +48,13 @@ if(searchList){
     function render(){
         html = ''
         for(let movie of searchListArr){
+            let moviePoster = ""
+            if(movie.Poster =="N/A" ){
+                moviePoster = "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }else{moviePoster = movie.Poster}
             html +=`
             <div class="movie">
-                <img src=${movie.Poster} alt="movie poster" class="poster">
+                <img src=${moviePoster} alt="movie poster" class="poster">
                 <div class="movie-info">
                     <div class="movieCon">
                         <h2>${movie.Title}</h2>
