@@ -48,13 +48,9 @@ if(searchList){
     function render(){
         html = ''
         for(let movie of searchListArr){
-            let moviePoster = ""
-            if(movie.Poster =="N/A" ){
-                moviePoster = "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            }else{moviePoster = movie.Poster}
             html +=`
             <div class="movie">
-                <img src=${moviePoster} alt="movie poster" class="poster">
+                <img src=${movie.Poster} alt="movie Poster" class="poster"  onerror="this.src='https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D'">
                 <div class="movie-info">
                     <div class="movieCon">
                         <h2>${movie.Title}</h2>
@@ -121,7 +117,7 @@ function displayWatchList(){
         for(let watch of watchListArr ){
             watchList.innerHTML +=`
                 <div class="movie">
-                    <img src=${watch.Poster} alt="movie poster" class="poster">
+                    <img src="${watch.Poster}" alt="movie poster" class="poster">
                     <div class="movie-info">
                         <div class="movieCon">
                             <h2>${watch.Title}</h2>
