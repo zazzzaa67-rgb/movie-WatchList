@@ -224,19 +224,26 @@ h2{
 #AIinputs{
     width : 80%;
     padding: .4rem .6rem;
-    font-weight: 600;
+    font-weight: 500;
     resize: none;
-    overflow-y: hidden;
+    overflow-y:hidden;
     min-height: 40px;
     max-height: 150px;
-    
-    
+    height: fit-content;
+    border:none;
+    outline: none;
+    font-size: 1.1rem;
+
+
 }
 #send{
     width : 20%;
     background-color: #ffffff;
     border : solid 1px #808080;
     cursor: pointer;
+    border :none;
+    border-left: solid 1px #898989;
+    font-size: 1.25rem;
 }
 #AI{
     display : flex;
