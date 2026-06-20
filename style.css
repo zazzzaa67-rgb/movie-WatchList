@@ -50,7 +50,7 @@ nav ul li  a {
     width : 100%;
     
 }
-#search-bar{
+#search-bar  {
     position:absolute;
     padding : 0 .4rem; 
     height: 40px;
@@ -192,8 +192,8 @@ h2{
     justify-content: center;
 }
 #OpenId{
-    width : 70px ;
-    height: 70px ;
+    width : 60px ;
+    height: 60px ;
     border-radius: 50%;
     background-color: #ffd700;
     color : #252525;
@@ -202,6 +202,68 @@ h2{
     border : solid 1px #252525;
     font-size: 1.5rem;
     cursor: pointer;
+    
+    margin: .4rem .5rem;
+    position: fixed;
+    bottom: 5px ;
+    left : 3px;
+    box-shadow: 1px 1px 1.2rem #252525;
+}
+
+#chat-bar{
+    display : flex; 
+    gap : 0 ; 
+    font-weight: 600;
+    border : solid 1px #808080;
+    border-radius:.1rem ;
+    width : 95%; 
+    margin-left:.5rem;
+    margin-bottom: 1rem;
+}
+
+#AIinputs{
+    width : 80%;
+    padding: .4rem .6rem;
+    font-weight: 600;
+    resize: none;
+    overflow-y: hidden;
+    min-height: 40px;
+    max-height: 150px;
+    
+    
+}
+#send{
+    width : 20%;
+    background-color: #ffffff;
+    border : solid 1px #808080;
+    cursor: pointer;
+}
+#AI{
+    display : flex;
+    flex-direction: column;
+    width: 90%; 
+    max-width: 25rem;
+    border : solid 1px #252525;
+    margin: .5rem auto;
+    position: fixed;
+    top : 58%;
+    left : 50%;
+    transform: translate(-50% , -50%);
+    background-color: #252525;
+    color: #ffffff;
+    height: 60vh;
+    gap: 2rem;
+    padding : .8rem 1rem;
+    text-align: center;
+    justify-content: space-between;
+}
+#messages{
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+h3{
+    font-size: 1.7rem;
 }
 
 @media(min-width : 640px ){
@@ -235,5 +297,12 @@ h2{
     .plot{
         max-width: 600px;
     }
+    #AI{
+        left : 10px;
+        transform: none;
+        top: 18%;
+        height: 70vh;
+    }
+
 
 }
