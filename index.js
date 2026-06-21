@@ -144,37 +144,12 @@ function removeFromWatchlist(id){
     displayWatchList()
 }
 // *********** AI-SECTION *********
-import {Groq} from "qroq-sdk"
 const userText = document.getElementById("AIinputs")
 const messages = document.getElementById("messages")
 const sendBtn = document.getElementById("send")
-const GROQ_API_KEY = "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";
-const messeges =[]
-const groq = new Groq({
-    apiKey : GROQ_API_KEY,
-    baseurl:"https://api.groq.com/openai/v1",
-    dangerouslyAllowBrowser: true
-})
-const response = await groq.chat.completions.create({
-    messeges,
-    model:"openai/gpt-oss-20b",
-    temperature : 1,
-    tokens: 100,
-    top_p: 1,
-    stream:true,
-    responsing_effort:"medium",
-    stop:null
-    
-})
+// 
 
-sendBtn.addEventListener("click" , function(){
-    messeges.push(
-        {
-            role: "user",
-            content : userText.value
-        }
-    )
-    console.log(response.choices[0].message.content)
+// sendBtn.addEventListener("click" , function(){
+//     fetch( , method="GET")
 
-
-})
+// })

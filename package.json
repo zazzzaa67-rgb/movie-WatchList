@@ -1,0 +1,26 @@
+{
+  "name": "movie-watchlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zazzzaa67-rgb/movie-WatchList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/zazzzaa67-rgb/movie-WatchList/issues"
+  },
+  "homepage": "https://github.com/zazzzaa67-rgb/movie-WatchList#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.2.1"
+  }
+}
