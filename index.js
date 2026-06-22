@@ -1,3 +1,5 @@
+
+
 const movie = document.getElementById("movieName")
 const searchList = document.getElementById("newMovies")
 const watchList = document.getElementById("watchList")
@@ -82,12 +84,14 @@ if(searchList){
         render()
     }
 }
+if(watchList){
     watchList.addEventListener("click" , e=>{
         const removeBtn = e.target.closest(".remove")
         if(removeBtn){
             const movieId = removeBtn.dataset.id
             removeFromWatchlist(movieId)}}
         )
+}
 
 function addToWatchlist(id){
     const selectedMovie = searchListArr.find(movie => movie.imdbID == id)
@@ -144,12 +148,68 @@ function removeFromWatchlist(id){
     displayWatchList()
 }
 // *********** AI-SECTION *********
-const userText = document.getElementById("AIinputs")
 const messages = document.getElementById("messages")
 const sendBtn = document.getElementById("send")
-// 
+const aiInput = document.getElementById("AIinputs")
+const openAi = document.getElementById("OpenId")
+const AI = document.getElementById("AI")
+openAi.addEventListener("click" , ()=>{
+    if(AI.style.display == "none"){
+        AI.style.display = "flex"
+    }else{
+        AI.style.display = "none"
+    }
 
-// sendBtn.addEventListener("click" , function(){
-//     fetch( , method="GET")
+})
 
-// })
+if (sendBtn) {
+    sendBtn.addEventListener("click", async function() {
+        console.log("BUTTON CLICKED")
+
+        const userInputValue = aiInput.value.trim()
+        if (!userInputValue) return;
+
+        // إظهار كلمة Loading شيك
+        messages.innerHTML = `
+            <div class="ai-buble" style="text-align: center; color: #06b6d4;">
+                <i class="fa-solid fa-spinner fa-spin"></i> Thinking...
+            </div>`;
+
+        try {
+            const res = await fetch("http://localhost:5000/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt: userInputValue })
+            })
+
+            const data = await res.json()
+            
+            // 👑 هنا السحر: دالة سريعة بتحول الرموز لـ HTML حقيقي من غير marked
+            if (data.reply) {
+                let text = data.reply;
+
+                // 1. تحويل العناوين الكبيرة ### أو ## أو # إلى <h2> لأسماء الأفلام
+                text = text.replace(/#{1,3}\s+(.+)/g, '<h2>$1</h2>');
+
+                // 2. تحويل الروابط المكتوبة كدا [IMDB](url) إلى أزرار حقيقية <a>
+                text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+                // 3. تحويل النقط (*) إلى سطور عادية مع تلوين الكلام الـ Bold
+                text = text.replace(/\*\s+(.+)/g, '<p>✦ $1</p>');
+                text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                // 4. عرض النتيجة النظيفة جوه الشات
+                messages.innerHTML = text;
+            } else {
+                messages.innerHTML = `<p style="color: #ef4444;">No reply received</p>`;
+            }
+
+            aiInput.value = ""
+
+        } catch (err) {
+            console.error("Fetch Error:", err)
+            messages.innerHTML = `<p style="color: #ef4444;">مستحيل الاتصال بالسيرفر، تأكد أنك مشغل server.js</p>`
+        }
+    })
+}
+
