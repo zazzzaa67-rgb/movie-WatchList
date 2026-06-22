@@ -79,8 +79,8 @@ app.post('/api/chat', async (req , res) => {
     const html = marked.parse(aiReply)
     console.log(html)
     res.json({reply : html})
-}catch(arr){
-    console.arror(arr)
+}catch(err){
+    console.error(err)
     res.status(500).json({
             error: err.message
         })
