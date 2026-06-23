@@ -210,6 +210,10 @@ if (sendBtn && messages && aiInput) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: userInputValue })
             })
+            if(!res.ok){
+    const err = await res.json()
+    throw new Error(err.error)
+    }
 
             const data = await res.json()
             
