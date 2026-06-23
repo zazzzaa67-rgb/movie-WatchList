@@ -10,7 +10,8 @@ app.use(cors())
 app.use(express.json())
 
 const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY || ""
+    apiKey: process.env.GROQ_API_KEY || "",
+    baseURL : process.env.GROQ_URL || ""
 })
 
 app.get("/", (req, res) => {
