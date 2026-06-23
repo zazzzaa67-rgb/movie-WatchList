@@ -205,7 +205,7 @@ if (sendBtn && messages && aiInput) {
             </div>`;
 
         try {
-            const res = await fetch("api/index.js/chat", {
+            const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: userInputValue })
