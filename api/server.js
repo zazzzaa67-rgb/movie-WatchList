@@ -87,5 +87,4 @@ app.post('/api/chat', async (req , res) => {
 }
 })
 
-const port = process.env.PORT ||  PORT
-app.listen(port, "0.0.0.0", () => console.log(`server running on ${port}`));
+module.exports = app

@@ -205,7 +205,7 @@ if (sendBtn && messages && aiInput) {
             </div>`;
 
         try {
-            const res = await fetch("https://movie-watch-list-virid.vercel.app/api/chat", {
+            const res = await fetch("api/server/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: userInputValue })
